@@ -5,7 +5,7 @@ const nftBalance = document.querySelector("#balance");
 const Idnft = document.querySelector("#Idnft");
 const send =document.querySelector("#send");
 const wallet=document.querySelector("#wallet");
-console.log(wallet.value);
+
 let user = Moralis.User.current();
 
 var d='';
@@ -27,8 +27,6 @@ const imas = async () => {
 
     const imag = await fetch(ad[index].url);
     const {image} = await imag.json();
-
-    console.log(image);
     senNft=`${senNft}<option value=" ${ad[index].id}"> ${ad[index].id}</option>`;
 
    
@@ -78,13 +76,13 @@ loginBtn.addEventListener("click", async () => {
 send.addEventListener('click', async()=>{
 
   const user = Moralis.User.current();
-  if(user){
+  if(true){
     await Moralis.enableWeb3();
     const options = {type: "erc721",  
     receiver: wallet.value,
     contractAddress: addressNft,
-    tokenId: 1}
-  Moralis.transfer(options).on("transactionHash", (hash) => {
+    tokenId: Idnft.value}
+   await Moralis.transfer(options).on("transactionHash", (hash) => {
 
     })
     .on("receipt", (receipt) => { 
@@ -99,4 +97,4 @@ send.addEventListener('click', async()=>{
   }else{
     alert("logue");
   }
-})
+});
