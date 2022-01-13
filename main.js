@@ -20,7 +20,8 @@ const imas = async () => {
     };
   });
   nftBalance.innerHTML=`Balance Nft : ${ad.length}`
-
+  imagen.innerHTML='';
+  Idnft.innerHTML='';
   
   for (let index = 0; index < ad.length; index++) {
 
