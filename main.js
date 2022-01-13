@@ -8,10 +8,11 @@ const wallet=document.querySelector("#wallet");
 console.log(wallet.value);
 let user = Moralis.User.current();
 
+var d='';
+var senNft='';
+
 const imas = async () => {
   let nft = await balanceNft();
-  
-
   const ad = nft.map((img) => {
     return {
       id: img.token_id,
@@ -19,19 +20,18 @@ const imas = async () => {
     };
   });
   nftBalance.innerHTML=`Balance Nft : ${ad.length}`
-  var p=0;
-  var d=``;
-  var senNft=``;
+
+  
   for (let index = 0; index < ad.length; index++) {
 
     const imag = await fetch(ad[index].url);
     const {image} = await imag.json();
 
     console.log(image);
-    senNft=senNft+` <option value=" ${ad[index].id}"> ${ad[index].id}</option>`;
+    senNft=`${senNft}<option value=" ${ad[index].id}"> ${ad[index].id}</option>`;
 
    
-    d=d+`<section  class="col-3">
+    d=`${d}<section  class="col-3">
     <div class="card" style="width: 18rem">
     <img
     src='${image}'
