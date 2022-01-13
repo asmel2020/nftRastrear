@@ -39,7 +39,7 @@ const imas = async () => {
     />
     <div class="card-body dd">
       <p class="card-text">
-       id : ${ad[index].id}
+       id :${ad[index].id}
       </p>
     </div>
   </div>
@@ -76,24 +76,16 @@ loginBtn.addEventListener("click", async () => {
 send.addEventListener('click', async()=>{
 
   const user = Moralis.User.current();
-  if(true){
+  if(user){
+  
     await Moralis.enableWeb3();
     const options = {type: "erc721",  
     receiver: wallet.value,
     contractAddress: addressNft,
-    tokenId: Idnft.value}
-   await Moralis.transfer(options).on("transactionHash", (hash) => {
+    tokenId: Number(Idnft.value)}
 
-    })
-    .on("receipt", (receipt) => { 
-      alert('completado');
-     })
-    .on("confirmation", (confirmationNumber, receipt) => { 
-  
-    })
-    .on("error", (error) => { 
-  
-     });
+   await Moralis.transfer(options);
+
   }else{
     alert("logue");
   }

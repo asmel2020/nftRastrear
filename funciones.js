@@ -41,7 +41,7 @@ const login = async () => {
     );*/
 
     //@dev switch user to correct network
-    const ChangeChainId = '0x4'; //Ethereum Mainnet
+    const ChangeChainId = '0x4';
     const chainIdHex = await Moralis.switchNetwork(ChangeChainId);
   }
 
